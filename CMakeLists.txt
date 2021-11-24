@@ -9,9 +9,9 @@ include_directories(include)
 # Add executable called "SVG2DragCut" that is built from the source files
 # "demo.cxx" and "demo_b.cxx". The extensions are automatically found.
 add_executable (SVG2DragCut
-    include/SVGParser.h
+    include/SVGPathParser.h
 
-    src/SVGParser.cpp
+    src/SVGPathParser.cpp
 
     src/SVG2DragCut.cpp
 )
