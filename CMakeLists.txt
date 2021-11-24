@@ -10,8 +10,10 @@ include_directories(include)
 # "demo.cxx" and "demo_b.cxx". The extensions are automatically found.
 add_executable (SVG2DragCut
     include/SVGPathParser.h
+    include/SVGPathToken.h
 
     src/SVGPathParser.cpp
+    src/SVGPathToken.cpp
 
     src/SVG2DragCut.cpp
 )

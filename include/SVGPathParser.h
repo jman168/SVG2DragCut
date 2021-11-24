@@ -3,16 +3,14 @@
 #include <vector>
 #include <string>
 
-enum Command {none = -1, moveto, moveto_r, closepath, lineto, lineto_r, horizontal_lineto, horizontal_lineto_r, vertical_lineto, vertical_lineto_r};
+#include "SVGPathToken.h"
 
 class SVGPathParser {
     private:
         std::string workingString;
-        std::vector<std::string> tokens;
+        std::vector<SVGPathToken> tokens;
 
         void tokenize();
-
-        Command getCommand(char c);
 
     public:
         void parse(std::string path);
