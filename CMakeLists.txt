@@ -11,9 +11,11 @@ include_directories(include)
 add_executable (SVG2DragCut
     include/SVGPathParser.h
     include/SVGPathToken.h
+    include/Line.h
 
     src/SVGPathParser.cpp
     src/SVGPathToken.cpp
+    src/Line.cpp
 
     src/SVG2DragCut.cpp
 )
