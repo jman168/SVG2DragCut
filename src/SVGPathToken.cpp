@@ -1,26 +1,13 @@
 #include "SVGPathToken.h"
 
-SVGPathToken::SVGPathToken(char command) {
-    _type = TokenType::CommandToken;
-    _command = getCommandFromChar(command);
-    _commandC = command;
+SVGPathToken::SVGPathToken(char _command) {
+    isCommand = true;
+    command = getCommandFromChar(_command);
 }
 
-SVGPathToken::SVGPathToken(double parameter) {
-    _type = TokenType::ParameterToken;
-    _parameter = parameter;
-}
-
-TokenType SVGPathToken::SVGPathToken::getType() {
-    return _type;
-}
-
-Command SVGPathToken::getCommand() {
-    return _command;
-}
-
-double SVGPathToken::getParameter() {
-    return _parameter;
+SVGPathToken::SVGPathToken(double _parameter) {
+    isCommand = false;
+    parameter = _parameter;
 }
 
 Command SVGPathToken::getCommandFromChar(char c) {
@@ -59,6 +46,55 @@ Command SVGPathToken::getCommandFromChar(char c) {
         break;
     case 'v':
         command = Command::vertical_lineto_r;
+        break;
+
+    case 'C':
+        command = Command::curveto;
+        break;
+    case 'c':
+        command = Command::curveto_r;
+        break;
+
+    case 'S':
+        command = Command::smooth_curveto;
+        break;
+    case 's':
+        command = Command::smooth_curveto_r;
+        break;
+
+    case 'Q':
+        command = Command::quadratic_curveto;
+        break;
+    case 'q':
+        command = Command::quadratic_curveto_r;
+        break;
+    
+    case 'T':
+        command = Command::smooth_quadratic_curveto;
+        break;
+    case 't':
+        command = Command::smooth_quadratic_curveto_r;
+        break;
+
+    case 'A':
+        command = Command::elliptical_arc;
+        break;
+    case 'a':
+        command = Command::elliptical_arc_r;
+        break;
+
+    case 'R':
+        command = Command::catmull_rom;
+        break;
+    case 'r':
+        command = Command::catmull_rom_r;
+        break;
+
+    case 'B':
+        command = Command::bearing;
+        break;
+    case 'b':
+        command = Command::bearing_r;
         break;
     }
 
